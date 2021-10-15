@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal ledger</title>
+    <!--stylesheet-->
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!--Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    
+    <!--fontawesome-->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+<!--stylingsheet-->
+<style>
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ececec;
+       
+    }
+    .box-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: #ccc;
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.box{
+    flex: 1 1 210px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.3);
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    border-radius: 10px;
+}
+.box .image{
+   padding: 10px;
+   background: #eee;
+   text-align: center; 
+    
+}
+.box .image img{
+    height: 200px;
+    width: 250px;
+    object-fit: cover;
+    filter: drop-shadow(0 3px 5px rgba(0,0,0,.7));
+}
+.box .info.title{
+    padding: 10px;
+    color: #666;
+    font-size: 20px;
+}
+.box .info .subinfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+}
+.box .info .subinfo .price{
+    color: #ff3300;
+    font-size: 20px;
+}
+.box .info .subinfo .price span{
+    font-size: 15px;
+    color: #999;
+    text-decoration: line-through;
+}
+.box .overlay{
+    position: absolute;
+    top: 0; left: 0;
+    height: 223px;
+    width: 100%;
+    background: rgba(0,0,0,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: none;
+}
+
+
+    section{
+        
+        border: 1px solid #ccc;
+        overflow-y: hidden;
+       
+    
+    }
+    header{
+        padding: 0px;
+        border-radius: 20px;
+        box-shadow: antiquewhite;
+        padding-bottom: 0px;
+        display: flex;
+        
+    }
+    .menu{
+        display: inline-block;
+    }
+    main{
+        background-color: #F7F7F7;
+        border-top-right-radius: 30px;
+        border-top-left-radius: 30px;
+        min-height: 100px;
+        padding-top: 10px;
+}
+
+.buttons{
+    display: flex;
+   padding: 10px;
+   padding-bottom: 0px;
+   padding-top: 0px;
+   display: flex;
+}
+.button{
+    flex:1;
+    height:190px;
+    padding: 15px;
+    border-radius: 10px;
+    background: white;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    
+    
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+.guidelines{
+    padding: 15px;
+    padding-top: 30px;
+    
+}
+.guideline{
+    display: flex;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.h2{
+    font-size: 1rem;
+    font-weight: 500;
+    color: #3E3049;
+    margin-bottom: 20px;
+}
+.title{
+   font-weight: 20px;
+   font-family: 'Times New Roman', Times, serif;
+   
+}
+.guide{
+  color: #665E77;
+}
+.logo{
+    padding-top: 30px;
+    padding-left: 10px;
+    justify-content: center; 
+    align-items: center;   
+    
+}
+
+.dropbtn {
+  background-color: white;
+  color: black;
+ padding-top:15px;
+  padding-left: 50px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color:#F7F7F7 ;
+
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  text-align: center;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+.button .image{
+  padding: 10px;
+   background:white;
+   text-align: center; 
+}
+.button .image img{
+    height: 100px;
+    width: 200px;
+    max-width: 100%;
+    object-fit: cover;
+    filter: drop-shadow(0 3px 5px rgba(0,0,0,.7));
+}
+img{
+  max-width: 100%;
+}
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.4s cubic-bezier(0,1.57,.67,1.18);
+}
+#page-wrap{
+  width: 800px;
+  margin: 0 auto;
+}
+</style>
+
+
+    </style>
+<script>
+  function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+</head>
+<body>
+    
+    <div id="page-wrap">
+    <section>
+        <!--navbar-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+        <!--imageogledger-->
+      <header >
+          <img  src="online.jpg" alt="header" style="border-radius: 10px; border-bottom-left-radius: 0px;  border-bottom-right-radius: 0px;" width="100%" height="20%">
+         </header>
+      
+
+        <!---->
+        <div class="box-container">
+          <div class="box">
+              <div class="image">
+                  <img src="frenchfries.png" alt="">
+              </div>
+                  <div class="info">
+                      <h3 class="title">
+                       Food
+                      </h3>
+                           <div class="subinfo">
+                               <div class="price"><i class="fa-solid fa-indian-rupee-sign"> </i>0.00/-
+                              </div>
+                      </div>
+                  </div>
+                  
+              </div>
+              <div class="box">
+                  <div class="image">
+                      <img src="computer.png" alt="">
+                  </div>
+                      <div class="info">
+                          <h3 class="title">
+                           Education
+                          </h3>
+                               <div class="subinfo">
+                                   <div class="price"><i class="fa-solid fa-indian-rupee-sign"> </i>0.00/-
+                                  </div>
+                          </div>
+                      </div>
+                      
+                  </div>
+                  <div class="box">
+                      <div class="image">
+                          <img src="fuel.png" alt="">
+                      </div>
+                          <div class="info">
+                              <h3 class="title">
+                               Fuel
+                              </h3>
+                                   <div class="subinfo">
+                                       <div class="price"><i class="fa-solid fa-indian-rupee-sign"> </i>0.00/-
+                                      </div>
+                              </div>
+                          </div>
+                          
+                      </div>
+                      <div class="box">
+                          <div class="image">
+                              <img src="doctors.png" alt="">
+                          </div>
+                              <div class="info">
+                                  <h3 class="title">
+                                  Health
+                                  </h3>
+                                       <div class="subinfo">
+                                           <div class="price"><i class="fa-solid fa-indian-rupee-sign"> </i>0.00/-
+                                          </div>
+                                  </div>
+                              </div>
+                              
+                          </div>
+                          <div class="box">
+                              <div class="image">
+                                  <img src="gproduct.png" alt="">
+                              </div>
+                                  <div class="info">
+                                      <h3 class="title">
+                                       Grocery
+                                      </h3>
+                                           <div class="subinfo">
+                                               <div class="price"><i class="fa-solid fa-indian-rupee-sign"> </i> 0.00/-
+                                              </div>
+                                      </div>
+                                  </div>
+                                  
+                              </div>
+                              <div class="box">
+                                  <div class="image">
+                                      <img src="travel.png" alt="">
+                                  </div>
+                                      <div class="info">
+                                          <h3 class="title">
+                                           Travel
+                                          </h3>
+                                               <div class="subinfo">
+                                                   <div class="price"><i class="fa-solid fa-indian-rupee-sign"> </i>0.00/-
+                                                  </div>
+                                          </div>
+                                      </div>
+                                      
+                                  </div>
+          
+        
+
+        <div class="guidelines">
+         <h2>Guidelines</h2>
+         <div class="guideline">
+             <div class="logo">
+               <img src="file.png" alt="create" width="35%"> 
+             </div>
+             <div class="info">
+                 <div class="title" style="font-weight: bold;">
+                     How to create ledger?
+                 </div>
+                 <div class="guide">
+                     Click any of the above tab as per your requirement then select from dropdown options create and create your ledger. 
+                 </div>
+                 <div class="imagecredits">
+                    <div>logo credits : Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                    <div>images credits : <a href="https://pixabay.com/">pixabay</a></div>
+                 </div>
+                 
+                 
+             </div>
+             
+         </div>
+        </div>
+        <div class="guidelines">
+           
+            <div class="guideline">
+                <div class="logo">
+                  <img src="search.png" alt="create" width="30%"> 
+                </div>
+                <div class="info">
+                    <div class="title" style="font-weight: bold;">
+                        How to view ledger?
+                    </div>
+                    <div class="guide">
+                        Click any of the above tab as per your requirement then select from dropdown options view and check your spend analysis. 
+                    </div>
+                    <div class="imagecredits">
+                       <div>logo credits : Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                       <div>images credits : <a href="https://pixabay.com/">pixabay</a></div>
+                    </div>
+                    
+                    
+                </div>
+                
+            </div>
+           </div>
+        </main>
+        </div>
+    </section>
+
+    </div>
+  
+</body>
+</html>
